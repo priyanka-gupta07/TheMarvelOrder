@@ -1,0 +1,670 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+
+    --bg:#050505;
+    --surface:#111111;
+
+    --red:#ED1D24;
+    --gold:#F4C542;
+
+    --white:#ffffff;
+    --text:#d7d7d7;
+
+    --blue:#2D72FF;
+    --purple:#8A3FFC;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--bg);
+
+    color:white;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+    position:relative;
+
+}
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-20;
+
+}
+
+.nebula{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(140px);
+
+    opacity:.18;
+
+    animation:floatNebula 35s ease-in-out infinite;
+
+}
+
+@keyframes nebulaFloat{
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+    50%{
+        transform:translate(50px,-40px) scale(1.12);
+    }
+    100%{
+        transform:translate(0,0) scale(1);
+    }
+} 
+.red{
+
+    width:500px;
+    height:500px;
+
+    background:var(--red);
+
+    top:-180px;
+    right:-120px;
+
+}
+
+.blue{
+
+    width:700px;
+    height:700px;
+
+    background:var(--blue);
+
+    bottom:-300px;
+    left:-220px;
+
+    animation-delay:2s;
+
+}
+
+.purple{
+
+    width:450px;
+    height:450px;
+
+    background:var(--purple);
+
+    top:35%;
+    right:25%;
+
+    animation-delay:4s;
+
+}
+
+.stars{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+
+    background-size:60px 60px, 140px 140px;
+    opacity:.14;
+    animation: starsMove 140s linear infinite;
+}
+
+.easter{
+    position:absolute;
+    width:120px;
+    height:120px;
+    opacity:0.3;
+    background-size:contain;
+    background-repeat:no-repeat;
+    pointer-events:none;
+    filter:blur(0.5px);
+    animation: floatArtifact 25s ease-in-out infinite;
+}
+
+.shield{
+    top:15%;
+    left:90%;
+    background-image:url("shield.png");
+    animation-duration:30s;
+}
+
+.hammer{
+    top:60%;
+    right:40%;
+    background-image:url("hammer.png");
+    animation-duration:35s;
+    animation-delay:3s;
+}
+
+.reactor{
+    top:1%;
+    left: 17%;
+    background-image:url("reactor.png");
+    animation-duration:28s;
+    animation-delay:6s;
+}
+
+@keyframes floatArtifact{
+    0%{
+        transform:translateY(0px) scale(1);
+        opacity:0.04;
+    }
+    50%{
+        transform:translateY(-25px) scale(1.05);
+        opacity:0.08;
+    }
+    100%{
+        transform:translateY(0px) scale(1);
+        opacity:0.04;
+    }
+}
+
+@keyframes starsMove{
+    0%{
+        transform:translateY(0);
+    }
+    100%{
+        transform:translateY(-250px);
+    }
+}
+
+@keyframes floatParticle{
+    0%{
+        transform:translateY(0) translateX(0);
+        opacity:0;
+    }
+    10%{
+        opacity:.3;
+    }
+    100%{
+        transform:translateY(-100vh) translateX(40px);
+        opacity:0;
+    }
+}
+
+header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:30px 8%;
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    z-index:100;
+
+    
+
+}
+
+.logo{
+
+    font-size:2rem;
+
+    letter-spacing:3px;
+
+    font-weight:800;
+
+    color:white;
+
+    cursor:default;
+
+}
+
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+    width:min(1400px,90%);
+
+    height:100vh;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+
+/* ===========================
+   LEFT
+=========================== */
+
+.hero-content{
+
+    width:55%;
+
+}
+
+.hero-content h2{
+
+    font-size:5.8rem;
+
+    line-height:1;
+
+    font-weight:800;
+
+    margin-bottom:35px;
+
+}
+
+.hero-content p{
+
+    width:80%;
+
+    color:var(--text);
+
+    font-size:1.2rem;
+
+    line-height:2;
+
+    margin-bottom:45px;
+
+}
+
+.hero-content span{
+    font-family: 'Dancing Script', cursive;
+    color: rgb(209, 65, 225);
+}
+
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:18px 42px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.35s ease;
+
+}
+
+.btn-release{
+
+    background:var(--red);
+
+}
+
+.btn-release:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 0 30px rgba(237,29,36,.55);
+
+}
+
+.btn-chrono{
+
+    border:2px soliD white;
+
+}
+
+.btn-chrono:hover{
+
+    background:white;
+
+    color:black;
+
+    transform:translateY(-6px);
+
+}
+
+
+/* ===========================
+   RIGHT
+=========================== */
+
+.hero-image{
+
+    width:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    scale: 90%;
+
+}
+
+
+/* ===========================
+   PORTAL
+=========================== */
+
+.portal{
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at center,
+    #232323,
+    #0d0d0d 70%,
+    #050505);
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:portalFloat 8s ease-in-out infinite;
+
+    overflow:visible;
+
+}
+
+.portal{
+    animation:
+        portalFloat 8s ease-in-out infinite,
+        portalPulse 7s ease-in-out infinite;
+}
+
+@keyframes portalPulse{
+    0%{
+        filter:brightness(1);
+    }
+    50%{
+        filter:brightness(1.25);
+    }
+    100%{
+        filter:brightness(1);
+    }
+}
+
+.portal-glow{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+
+        rgba(237,29,36,.22),
+
+        transparent 70%
+
+    );
+
+    filter:blur(70px);
+
+    z-index:-2;
+
+}
+
+
+/* animated ring */
+
+.portal::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.08);
+
+}
+
+
+/* ===========================
+   STAN LEE
+=========================== */
+
+.stan{
+
+    position:absolute;
+
+    height:620px;
+
+    right:-35px;
+
+    bottom:-45px;
+
+    z-index:20;
+
+    animation:stanFloat 7s ease-in-out infinite;
+
+    user-select:none;
+
+    pointer-events:none;
+
+}
+
+.stan{
+    animation:
+        stanFloat 6s ease-in-out infinite,
+}
+
+
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+
+@keyframes twinkle{
+
+    0%{
+        opacity:.25;
+    }
+
+    50%{
+        opacity:.55;
+    }
+
+    100%{
+        opacity:.25;
+    }
+
+}
+
+@keyframes portalFloat{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+@keyframes stanFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+
+@media(max-width:1100px){
+
+    .hero{
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        text-align:center;
+
+        gap:80px;
+
+        padding-top:140px;
+
+    }
+
+    .hero-left{
+
+        width:100%;
+
+    }
+
+    .hero-right{
+
+        width:100%;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    header{
+
+        padding:22px 6%;
+
+    }
+
+    nav{
+
+        display:none;
+
+    }
+
+    .hero-left h1{
+
+        font-size:3.5rem;
+
+    }
+
+    .portal{
+
+        width:320px;
+
+        height:320px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero-left h1{
+
+        font-size:2.8rem;
+
+    }
+
+    .hero-left p{
+
+        font-size:.95rem;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .portal{
+
+        width:260px;
+
+        height:260px;
+
+    }
+
+}
