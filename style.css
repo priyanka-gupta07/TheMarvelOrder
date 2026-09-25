@@ -147,14 +147,14 @@ body{
 .shield{
     top:15%;
     left:90%;
-    background-image:url("shield.png");
+    background-image:url("assets/shield.png");
     animation-duration:30s;
 }
 
 .hammer{
     top:60%;
     right:40%;
-    background-image:url("hammer.png");
+    background-image:url("assets/hammer.png");
     animation-duration:35s;
     animation-delay:3s;
 }
@@ -162,7 +162,7 @@ body{
 .reactor{
     top:1%;
     left: 17%;
-    background-image:url("reactor.png");
+    background-image:url("assets/reactor.png");
     animation-duration:28s;
     animation-delay:6s;
 }
@@ -665,6 +665,518 @@ header{
 
         height:260px;
 
+    }
+
+}
+
+/* =========================================================
+   CHRONO — TEMPORAL TRANSITION
+   ========================================================= */
+
+/* =========================================================
+   CHRONO — TIME STONE TRANSITION
+   ========================================================= */
+
+#chronoTransition {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    background: #020207;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    overflow: hidden;
+
+    transition: opacity 0.2s ease;
+}
+
+#chronoTransition.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+
+/* =========================================================
+   STONE CONTAINER
+   ========================================================= */
+
+.time-stone-wrap {
+    position: relative;
+
+    width: 170px;
+    height: 210px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: scale(.55);
+    opacity: 0;
+
+    z-index: 5;
+}
+
+#chronoTransition.active .time-stone-wrap {
+    animation:
+        stoneAppear .45s ease-out forwards,
+        stoneHold 1.25s ease .45s forwards;
+}
+
+
+/* =========================================================
+   OUTER AURA
+   ========================================================= */
+
+.stone-aura {
+    position: absolute;
+
+    width: 120px;
+    height: 150px;
+
+   background:
+    radial-gradient(
+        ellipse,
+        rgba(70, 255, 130, .65),
+        rgba(30, 200, 90, .25) 45%,
+        transparent 72%
+    );
+
+    filter: blur(18px);
+
+    opacity: .4;
+
+    transform: scale(.7);
+}
+
+#chronoTransition.active .stone-aura {
+    animation: auraPulse 1.5s ease-in-out .35s infinite alternate;
+}
+
+
+/* =========================================================
+   THE STONE
+   ========================================================= */
+
+.time-stone {
+    position: relative;
+
+    width: 82px;
+    height: 112px;
+
+    overflow: hidden;
+
+    clip-path: polygon(
+        50% 0%,
+        88% 20%,
+        100% 58%,
+        72% 100%,
+        28% 100%,
+        0% 58%,
+        12% 20%
+    );
+
+    background:
+    radial-gradient(
+        circle at 45% 30%,
+        #e5ffe9,
+        #6dff91 20%,
+        #20b85a 48%,
+        #075c32 75%,
+        #031d12
+    );
+
+box-shadow:
+    0 0 20px rgba(70, 255, 130, .9),
+    0 0 60px rgba(40, 220, 100, .55),
+    0 0 120px rgba(30, 200, 90, .3);
+
+
+    transform: rotate(0deg);
+}
+
+
+/* =========================================================
+   INNER GLOW
+   ========================================================= */
+
+.stone-inner-glow {
+    position: absolute;
+    inset: -20px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.75),
+            rgba(170,160,255,.3) 30%,
+            transparent 65%
+        );
+
+    mix-blend-mode: screen;
+
+    opacity: .35;
+}
+
+
+/* =========================================================
+   LOKI INSIDE THE STONE
+   ========================================================= */
+
+.loki-inside {
+    position: absolute;
+
+    left: 50%;
+    bottom: -4px;
+
+    width: 115px;
+    height: auto;
+
+    transform:
+        translateX(-50%)
+        scale(.78);
+
+    opacity: 0;
+
+    object-fit: contain;
+
+    filter:
+        saturate(.8)
+        brightness(.65)
+        contrast(1.15);
+
+    mix-blend-mode: screen;
+}
+
+#chronoTransition.active .loki-inside {
+    animation: lokiReveal .8s ease .55s forwards;
+}
+
+
+/* =========================================================
+   STONE SHINE
+   ========================================================= */
+
+.stone-shine {
+    position: absolute;
+
+    top: -80%;
+    left: -100%;
+
+    width: 45%;
+    height: 260%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+    transform: rotate(20deg);
+
+    opacity: 0;
+}
+
+#chronoTransition.active .stone-shine {
+    animation: stoneShine .8s ease 1s forwards;
+}
+
+
+/* =========================================================
+   CHRONO TEXT
+   ========================================================= */
+
+.chrono-arrival {
+    position: absolute;
+
+    z-index: 20;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: scale(.9);
+
+    pointer-events: none;
+}
+
+.chrono-arrival span {
+    display: block;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: clamp(3rem, 7vw, 7rem);
+
+    font-weight: 800;
+
+    letter-spacing: .22em;
+
+    text-shadow:
+        0 0 30px rgba(120,110,255,.45);
+}
+
+.chrono-arrival small {
+    display: block;
+
+    margin-top: 10px;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: .7rem;
+
+    letter-spacing: .45em;
+}
+
+#chronoTransition.active .chrono-arrival {
+    animation:
+        chronoAppear .5s ease 1.65s forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes stoneAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(.3);
+        filter: blur(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+
+@keyframes stoneHold {
+
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.06);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes auraPulse {
+
+    from {
+        opacity: .35;
+        transform: scale(.85);
+    }
+
+    to {
+        opacity: .8;
+        transform: scale(1.2);
+    }
+}
+
+
+@keyframes lokiReveal {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            scale(.65);
+        filter:
+            blur(8px)
+            brightness(.2);
+    }
+
+    60% {
+        opacity: .7;
+        transform:
+            translateX(-50%)
+            scale(.82);
+        filter:
+            blur(1px)
+            brightness(.65);
+    }
+
+    100% {
+        opacity: .95;
+        transform:
+            translateX(-50%)
+            scale(.78);
+        filter:
+            blur(0)
+            brightness(.75);
+    }
+}
+
+
+@keyframes stoneShine {
+
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 180%;
+        opacity: 0;
+    }
+}
+
+
+@keyframes chronoAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(.92);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+
+@keyframes transitionBackground {
+
+    0% {
+        background: #020207;
+    }
+
+    55% {
+        background:
+            radial-gradient(
+                circle,
+                rgba(70,55,180,.12),
+                #020207 55%
+            );
+    }
+
+    100% {
+        background: #020207;
+    }
+}
+
+#chronoTransition.active .time-stone-wrap {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+#chronoTransition.active .time-stone {
+    opacity: 1 !important;
+}
+
+#chronoTransition.active .stone-aura {
+    opacity: 1 !important;
+}
+
+/* =========================================================
+   GREEN → PURPLE TEMPORAL EXPANSION
+   ========================================================= */
+
+#chronoTransition.active::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190, 130, 255, 1),
+            rgba(120, 60, 255, .75) 35%,
+            rgba(80, 30, 200, .35) 60%,
+            transparent 72%
+        );
+
+    transform: translate(-50%, -50%) scale(0);
+
+    opacity: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+#chronoTransition.active::before {
+    animation: purpleExpansion 1s ease-in 1.55s forwards;
+}
+
+
+@keyframes purpleExpansion {
+
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(80);
+        opacity: 1;
+    }
+
+}
+
+#chronoTransition.active .time-stone {
+    animation:
+        stoneGreen 1.5s ease forwards,
+        stonePurple 0.8s ease 1.2s forwards;
+}
+
+@keyframes stoneGreen {
+
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(0deg);
+    }
+
+}
+
+@keyframes stonePurple {
+
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(105deg);
     }
 
 }
