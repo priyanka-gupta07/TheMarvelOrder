@@ -417,7 +417,7 @@ const movies = [
     {
         title: "Loki S2",
         year: "TVA / Multiverse",
-        poster: "https://image.tmdb.org/t/p/w1280/3yhoq5LVMgKy9rEriH6ytq9BoJV.jpg"
+        poster: "https://media.themoviedb.org/t/p/w116_and_h174_face/oJdVHUYrjdS2IqiNztVIP4GPB1p.jpg"
     },
 
     {
