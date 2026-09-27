@@ -484,7 +484,7 @@ body {
     position: relative;
 
     width: 700px;
-    height: 450px;
+    height: 350px;
 }
 
 /* STONES */
@@ -1071,4 +1071,217 @@ body {
         transform: translateX(35px) scaleX(1);
     }
 
+}
+
+/* =========================
+   CINEMATIC GLASS SHARDS
+========================= */
+
+.hero-shards {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Every shard is an irregular piece of glass */
+
+.glass-shard {
+    position: absolute;
+
+    overflow: hidden;
+
+    background: rgba(180, 200, 255, 0.055);
+
+    border: 1px solid rgba(210, 220, 255, 0.22);
+
+    opacity: 0.65;
+
+    backdrop-filter: blur(2px);
+
+    box-shadow:
+        0 0 18px rgba(110, 130, 255, 0.12),
+        inset 0 0 15px rgba(255,255,255,0.05);
+
+    animation: shardFloat 8s ease-in-out infinite;
+}
+
+
+/* CLIPPED VIDEO / IMAGE */
+
+.glass-shard img,
+.glass-shard video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    opacity: 0.7;
+
+    filter:
+        brightness(0.65)
+        saturate(0.8);
+
+    transform: scale(1.15);
+}
+
+
+/* =========================
+   TOP SHARDS
+========================= */
+
+.shard-1 {
+    width: 150px;
+    height: 190px;
+
+    left: 11%;
+    top: 18%;
+
+    clip-path: polygon(
+        18% 0%,
+        100% 12%,
+        82% 78%,
+        45% 100%,
+        0% 63%
+    );
+
+    transform: rotate(-14deg);
+}
+
+
+.shard-2 {
+    width: 110px;
+    height: 155px;
+
+    left: 30%;
+    top: 0.5%;
+
+    clip-path: polygon(
+        0% 18%,
+        70% 0%,
+        100% 48%,
+        65% 100%,
+        12% 78%
+    );
+
+    transform: rotate(8deg);
+
+    animation-delay: -3s;
+}
+
+
+.shard-3 {
+    width: 145px;
+    height: 175px;
+
+    right: 28%;
+    top: 0.5%;
+
+    clip-path: polygon(
+        25% 0%,
+        100% 25%,
+        76% 100%,
+        10% 80%,
+        0% 35%
+    );
+
+    transform: rotate(13deg);
+
+    animation-delay: -5s;
+}
+
+
+/* =========================
+   BOTTOM SHARDS
+========================= */
+
+.shard-4 {
+    width: 125px;
+    height: 175px;
+
+    left: 25%;
+    bottom: 1%;
+
+    clip-path: polygon(
+        0% 20%,
+        65% 0%,
+        100% 40%,
+        75% 100%,
+        15% 82%
+    );
+
+    transform: rotate(12deg);
+
+    animation-delay: -2s;
+}
+
+
+.shard-5 {
+    width: 155px;
+    height: 190px;
+
+    left: 49%;
+    bottom: 2%;
+
+    clip-path: polygon(
+        15% 0%,
+        100% 20%,
+        88% 70%,
+        48% 100%,
+        0% 55%
+    );
+
+    transform: rotate(-7deg);
+
+    animation-delay: -6s;
+}
+
+
+.shard-6 {
+    width: 130px;
+    height: 170px;
+
+    right: 18%;
+    bottom: 16%;
+
+    clip-path: polygon(
+        30% 0%,
+        100% 30%,
+        80% 88%,
+        20% 100%,
+        0% 35%
+    );
+
+    transform: rotate(-13deg);
+
+    animation-delay: -4s;
+}
+
+
+/* =========================
+   FLOATING MOTION
+========================= */
+
+@keyframes shardFloat {
+
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -12px;
+    }
+
+}
+
+
+.release-hero {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+}
+
+.stone{
+    
 }

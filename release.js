@@ -130,3 +130,18 @@ for (let i = 0; i < 150; i++) {
 
     starField.appendChild(star);
 }
+
+document.addEventListener("click", (event) => {
+
+    const clickedStone = event.target.closest(".stone");
+
+    if (!clickedStone) {
+
+        stones.forEach(stone => {
+            stone.classList.remove("selected");
+        });
+
+        orbit.classList.remove("phase-selected");
+    }
+
+});
